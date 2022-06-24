@@ -6,13 +6,11 @@
 /*   By: pnolte <pnolte@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 14:43:45 by pnolte            #+#    #+#             */
-/*   Updated: 2022/06/24 10:55:49 by pnolte           ###   ########.fr       */
+/*   Updated: 2022/06/24 13:01:08 by pnolte           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
-
-// c|= (signum == SIGUSR2)
 
 static void	msg_rec(int signo, siginfo_t *info, void *context)
 {
@@ -20,7 +18,7 @@ static void	msg_rec(int signo, siginfo_t *info, void *context)
 	static int		i = 0;
 	pid_t			client_pid;
 
-	(void)context;
+	context = NULL;
 	client_pid = info->si_pid;
 	if (signo == SIGUSR2)
 		c |= 1;
